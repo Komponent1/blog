@@ -9,12 +9,6 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
     height: 1080,
     mode: Phaser.Scale.FIT,
   },
-  physics: {
-    default: 'arcade',
-    arcade: {
-      debug: false,
-    },
-  },
   input: {
     mouse: true,
   },
