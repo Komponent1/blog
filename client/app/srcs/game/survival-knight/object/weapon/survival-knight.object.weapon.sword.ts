@@ -1,4 +1,4 @@
-import { Vector } from "../../../utils/vector";
+import { Vector } from "../../../common/utils/vector";
 import { SWORD } from "../../constant/survival-knight.constant.object";
 import type { Stage } from "../../scenes/survival-knight.scene.stage";
 

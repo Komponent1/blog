@@ -1,5 +1,9 @@
 import { Scene } from "phaser";
 import { StageInfo } from "../object/ten-bricks.object.stageInfo";
+import {
+  createUser, getHashKey, saveHashKey, saveScore,
+} from '../../common/game.common.score';
+import { UserResponse } from '../../common/dto/game.common.dto';
 
 export class Result extends Scene {
   constructor() {
@@ -42,5 +46,23 @@ export class Result extends Scene {
     });
 
     this.add.container(1920 / 2, 1080 / 2, [back, score, ScoreText, this.startButton]);
+
+    const key = getHashKey();
+    if (key) {
+      saveScore({
+        uid: key as string,
+        gid: "ten-bricks",
+        score: this.stageInfo.score,
+      });
+    } else {
+      createUser("unknown").then((res: UserResponse) => {
+        saveHashKey(res.uid);
+        saveScore({
+          uid: res.uid,
+          gid: "ten-bricks",
+          score: this.stageInfo.score,
+        });
+      });
+    }
   }
 }

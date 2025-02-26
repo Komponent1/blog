@@ -1,7 +1,7 @@
 import { MAP_H, MAP_W } from "../constant/survival-knight.constant.config";
 import {} from '../constant/survival-knight.constant.monster';
 import type {Stage} from '../scenes/survival-knight.scene.stage';
-import {Vector} from '../../utils/vector';
+import {Vector} from '../../common/utils/vector';
 import type {Character} from './survival-knight.object.character';
 import {BulletStatus} from './survival-knight.object.enum';
 

@@ -1,6 +1,6 @@
 import { HPbarType } from "../../constant/survival-knight.constant.hp";
 import type {Stage} from '../../scenes/survival-knight.scene.stage';
-import {Vector} from '../../../utils/vector';
+import {Vector} from '../../../common/utils/vector';
 import {Bullet} from '../survival-knight.object.bullet';
 import {BulletStatus, CharacterStatus} from '../survival-knight.object.enum';
 import {Player} from '../survival-knight.object.player';

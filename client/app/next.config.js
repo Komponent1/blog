@@ -31,6 +31,10 @@ const nextConfig = {
       {
         source: '/steam_api/:path*',
         destination: 'https://store.steampowered.com/api/:path*',
+      },
+      {
+        source: '/seolim/:path*',
+        destination: `http://${process.env.SERVER_HOST}/:path*`,
       }
     ]
   }

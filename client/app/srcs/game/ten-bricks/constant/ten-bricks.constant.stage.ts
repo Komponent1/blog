@@ -11,7 +11,7 @@ export const MARGIN = 16;
 export const ROW = 10 * 2;
 export const COL = 17;
 /** 게임 플레이 시간 120초 */
-export const GAME_TIME = 120 * 1000;
+export const GAME_TIME = 12 * 1000;
 /** 스테이지 상태 */
 export enum StageState {
   Playing = "Playing",

@@ -1,6 +1,6 @@
 import {CharacterStatus} from './survival-knight.object.enum';
 import {Hpbar} from './base/survival-knight.object.hpbar';
-import { Vector } from "../../utils/vector";
+import { Vector } from "../../common/utils/vector";
 import type {Stage} from '../scenes/survival-knight.scene.stage';
 
 export class Character {
