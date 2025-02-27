@@ -11,7 +11,7 @@ export class User extends BaseEntity {
   nickname: string;
 
   @Column()
-  is_temp: boolean;
+  pw: string;
 
   @OneToMany(() => Score, score => score)
   scores: Score[];

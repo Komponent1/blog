@@ -15,9 +15,22 @@ export class UserService {
     return await this.userRepository.find();
   }
 
+  async login(nickname: string, pw: string): Promise<User> {
+    const user = await this.userRepository.findOne({
+      where: { nickname, pw },
+    });
+    return user;
+  }
+
   async getUser(uid: string): Promise<User> {
     const user = await this.userRepository.findOne({
       where: { uid },
+    });
+    return user;
+  }
+  async getUserWithNickname(nickname: string): Promise<User> {
+    const user = await this.userRepository.findOne({
+      where: { nickname },
     });
     return user;
   }

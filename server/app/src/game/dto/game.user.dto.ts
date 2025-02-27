@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class UserResponse {
   @IsString() @IsNotEmpty() uid: string;
@@ -15,8 +15,9 @@ export class UserScoreResponse {
 export class ScoreRequest {
   @IsString() @IsNotEmpty() uid: string;
   @IsString() @IsNotEmpty() gid: string;
-  @IsString() @IsNotEmpty() score: number;
+  @IsNumber() @IsNotEmpty() score: number;
 }
 export class UserRequest {
   @IsString() @IsNotEmpty() nickname: string;
+  @IsString() @IsNotEmpty() pw: string;
 }

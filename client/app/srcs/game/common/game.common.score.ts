@@ -19,7 +19,7 @@ export const saveScore = async ({
   gid: string;
   score: number;
 }) => {
-  const response = await fetch(`/seolim/score`, {
+  const response = await fetch(`/seolim/user/score`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -30,8 +30,8 @@ export const saveScore = async ({
     throw new Error('Failed to save score');
   }
 };
-export const getScore = async (uid: string, gid: string): Promise<ScoreResponse> => {
-  const response = await fetch(`/seolim/${uid}/score/${gid}`, {
+export const getScore = async (uid: string, gid: string): Promise<ScoreResponse[]> => {
+  const response = await fetch(`/seolim/user/${uid}/score/${gid}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -41,18 +41,44 @@ export const getScore = async (uid: string, gid: string): Promise<ScoreResponse>
     throw new Error('Failed to get score');
   }
   const data = await response.json();
-  return data.score;
+  return data;
 };
-export const createUser = async (nickname: string): Promise<UserResponse> => {
+export const createUser = async (nickname: string, pw: string): Promise<UserResponse> => {
   const response = await fetch(`/seolim/user`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ nickname }),
+    body: JSON.stringify({ nickname, pw }),
   });
   if (!response.ok) {
     throw new Error('Failed to create user');
+  }
+  const data = await response.json();
+  return data;
+};
+export const getUser = async (uid: string): Promise<UserResponse> => {
+  const response = await fetch(`/seolim/user/${uid}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  if (!response.ok) {
+    throw new Error('Failed to get user');
+  }
+  const data = await response.json();
+  return data;
+};
+export const login = async (nickname: string, pw: string): Promise<UserResponse> => {
+  const response = await fetch(`/seolim/user/${nickname}/login/${pw}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  if (!response.ok) {
+    throw new Error('Failed to login');
   }
   const data = await response.json();
   return data;

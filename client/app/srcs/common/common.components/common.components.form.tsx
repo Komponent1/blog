@@ -4,6 +4,16 @@ import Tooltip from "../../steam/components/steam.components.tooltip";
  * design copy below
  * https://github.com/tailwindtoolbox/Rainblur-Landing-Page/blob/main/index.html
  */
+/**
+ * Form Component
+ * @param placeholder
+ * @param buttonText
+ * @param labelText
+ * @param value
+ * @param setValue
+ * @param onSubmit
+ * @param labelId
+ */
 type Props = {
   placeholder: string;
   buttonText: string;

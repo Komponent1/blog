@@ -16,6 +16,12 @@ export class GameContoller {
     return users;
   }
 
+  @Get(':nickname/login/:pw')
+  async login(@Param('nickname') nickname: string, @Param('pw') pw: string): Promise<UserResponse> {
+    const user = await this.userService.login(nickname, pw);
+    return user;
+  }
+
   @Get(':uid')
   async getUser(@Param('uid') uid: string): Promise<UserResponse | undefined> {
     try {
@@ -64,7 +70,7 @@ export class GameContoller {
   @Post()
   async createUser(@Body() body: UserRequest): Promise<UserResponse> {
     try {
-      const user = await this.userService.createUser({ nickname: body.nickname, is_temp: true });
+      const user = await this.userService.createUser({ nickname: body.nickname, pw: body.pw });
       return user;
     } catch (err) {
       throw new UserAlreadyExistsError(err);
@@ -73,14 +79,14 @@ export class GameContoller {
   @Patch(':uid')
   async updateUser(@Param('uid') uid: string, @Query('nickname') nickname: string): Promise<UserResponse> {
     try {
-      const updatedUser = await this.userService.updateUser(uid, { nickname, is_temp: false });
+      const updatedUser = await this.userService.updateUser(uid, { nickname });
       return updatedUser;
     } catch (err) {
       throw new UserNotFoundError(err);
     }
   }
 
-  @Post()
+  @Post('score')
   async createScore(@Body() body: ScoreRequest): Promise<void> {
     try {
       await this.scoreService.createScore(body);
